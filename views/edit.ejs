@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('partials/head') %>
+        
+    </head>
+    <body>
+        <div class="container">
+          <%- include('partials/nav') %>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Editer une tache: </h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/editer/<%=todo.id %>?_method=PUT" > 
+                                <div class="mb-3">
+                                <label for="todo" class="form-label">libellé de la tache:</label>
+                                <input type="text" class="form-control" id="todo" name="todo" value="<%= todo.title %>"><br>
+                                <div class="d-grid gap-1">
+                                    <button type="submit" class="btn btn-primary">
+                                      Editer &nbsp <i class="fa fa-pencil-alt" ></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <%- include('partials/scripts') %>
+
+    </body>
+</html>

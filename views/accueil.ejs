@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('partials/head') %>
+        
+    </head>
+    <body>
+        <div class="container">
+          <%- include('partials/nav') %>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Ajouter une tache</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="/ajouter" method="POST">
+                                <div class="mb-3">
+                                    <label for="todo" class="form-label">libellé de la tache:</label>
+                                    <input type="text" class="form-control" id="todo" name="todo"><br>
+                                    <div class="d-grid gap-1">
+                                        <button type="submit" class="btn btn-primary">
+                                          Ajouter &nbsp <i class="fa fa-plus" ></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Todo</th>
+                            <th scope="col">Editer</th>
+                            <th scope="col">Supprimer</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% todos.forEach((unT) => { %>
+
+                          <tr>
+                            <th scope="row"><%= unT.id %></th>
+                            <td><%= unT.title %></td>
+                            <td>
+                              <a type="button" class="btn btn-info" href="/editer/<%=unT.id %>">
+                                <i class="fa fa-pencil-alt"></i>
+                            </td>
+                            <td>
+                              <form method="POST" action="/supprimer/<%=unT.id %>?_method=DELETE" >
+                                <button type="submit" class="btn btn-danger">
+                                  <i class="fa fa-trash-alt"></i>
+                                </button>
+                              </form>
+                            </td>
+                          </tr>
+                          <% }); %>
+                          
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+ 
+        </div>
+
+        <%- include('partials/scripts') %>
+
+    </body>
+</html>
+
+
